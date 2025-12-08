@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "next-themes";
 import { Geist } from "next/font/google";
+import { KasadaClient } from "@/utils/kasada/kasada-client";
 
 const geist = Geist({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${geist.className}`}>
       <body>
         <ThemeProvider attribute="class" enableSystem forcedTheme="dark">
+          <KasadaClient />
           <Toaster position="top-center" richColors />
           {children}
         </ThemeProvider>
