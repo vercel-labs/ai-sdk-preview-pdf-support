@@ -10,7 +10,7 @@ const gateway = createGateway({
 
 export const generateQuizTitle = async (file: string) => {
   const result = await generateObject({
-    model: gateway("google/gemini-1.5-flash-latest"),
+    model: gateway("google:gemini-2.0-flash-001"),
     schema: z.object({
       title: z
         .string()

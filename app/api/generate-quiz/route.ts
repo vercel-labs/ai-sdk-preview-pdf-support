@@ -19,7 +19,7 @@ export async function POST(req: Request) {
   const firstFile = files[0].data;
 
   const result = streamObject({
-    model: gateway("google/gemini-1.5-pro-latest"),
+    model: gateway("google:gemini-2.5-flash"),
     messages: [
       {
         role: "system",
