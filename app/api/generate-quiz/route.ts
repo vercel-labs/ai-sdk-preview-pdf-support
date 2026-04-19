@@ -3,9 +3,7 @@ import { createGateway } from "@ai-sdk/gateway";
 import { streamObject } from "ai";
 import { checkBotId } from "botid/server";
 
-const gateway = createGateway({
-  baseURL: "https://ai-gateway.vercel.sh/v1/ai",
-});
+const gateway = createGateway();
 
 export const maxDuration = 60;
 
@@ -19,7 +17,7 @@ export async function POST(req: Request) {
   const firstFile = files[0].data;
 
   const result = streamObject({
-    model: gateway("google:gemini-2.5-flash"),
+    model: gateway("google/gemini-2.5-flash"),
     messages: [
       {
         role: "system",
