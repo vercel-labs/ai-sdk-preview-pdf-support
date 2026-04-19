@@ -36,7 +36,7 @@ export async function POST(req: Request) {
           {
             type: "file",
             data: firstFile,
-            mimeType: "application/pdf",
+            mediaType: "application/pdf",
           },
         ],
       },

@@ -33,9 +33,9 @@ export default function ChatWithFiles() {
 
   const {
     submit,
-    object: partialQuestions,
+    object,
     isLoading,
-  } = experimental_useObject({
+  } = experimental_useObject<any>({
     api: "/api/generate-quiz",
     schema: questionsSchema,
     initialValue: undefined,
@@ -43,10 +43,12 @@ export default function ChatWithFiles() {
       toast.error("Failed to generate quiz. Please try again.");
       setFiles([]);
     },
-    onFinish: ({ object }) => {
+    onFinish: ({ object }: any) => {
       setQuestions(object ?? []);
     },
   });
+
+  const partialQuestions = object as z.infer<typeof questionsSchema> | undefined;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
