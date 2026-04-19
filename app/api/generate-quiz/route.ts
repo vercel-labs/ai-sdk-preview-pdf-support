@@ -1,15 +1,23 @@
 import { questionSchema, questionsSchema } from "@/lib/schemas";
-import { google } from "@ai-sdk/google";
+import { createGateway } from "@ai-sdk/gateway";
 import { streamObject } from "ai";
+import { checkBotId } from "botid/server";
+
+const gateway = createGateway();
 
 export const maxDuration = 60;
 
 export async function POST(req: Request) {
+  const { isBot } = await checkBotId();
+  if (isBot) {
+    return new Response("Access denied", { status: 403 });
+  }
+
   const { files } = await req.json();
   const firstFile = files[0].data;
 
   const result = streamObject({
-    model: google("gemini-1.5-pro-latest"),
+    model: gateway("google/gemini-2.5-flash"),
     messages: [
       {
         role: "system",
@@ -26,7 +34,7 @@ export async function POST(req: Request) {
           {
             type: "file",
             data: firstFile,
-            mimeType: "application/pdf",
+            mediaType: "application/pdf",
           },
         ],
       },

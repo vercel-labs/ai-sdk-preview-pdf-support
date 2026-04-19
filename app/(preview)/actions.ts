@@ -1,12 +1,14 @@
 "use server";
 
-import { google } from "@ai-sdk/google";
+import { createGateway } from "@ai-sdk/gateway";
 import { generateObject } from "ai";
 import { z } from "zod";
 
+const gateway = createGateway();
+
 export const generateQuizTitle = async (file: string) => {
   const result = await generateObject({
-    model: google("gemini-1.5-flash-latest"),
+    model: gateway("google/gemini-2.0-flash"),
     schema: z.object({
       title: z
         .string()

@@ -9,18 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ai-sdk/anthropic": "^1.0.5",
-    "@ai-sdk/google": "^1.0.9",
-    "@ai-sdk/openai": "^1.0.8",
+    "@ai-sdk/gateway": "^3.0.104",
+    "@ai-sdk/react": "^3.0.170",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-progress": "^1.1.0",
     "@radix-ui/react-radio-group": "^1.2.1",
     "@radix-ui/react-scroll-area": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@vercel/analytics": "^1.4.1",
-    "@vercel/functions": "^1.5.0",
     "@vercel/kv": "^3.0.0",
-    "ai": "^4.0.16",
+    "ai": "^6.0.168",
+    "botid": "^1.5.11",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.14.1",
@@ -32,7 +31,7 @@
     "sonner": "^1.7.1",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.24.1"
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
