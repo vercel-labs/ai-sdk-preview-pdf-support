@@ -1,12 +1,16 @@
 "use server";
 
-import { google } from "@ai-sdk/google";
+import { createGateway } from "@ai-sdk/gateway";
 import { generateObject } from "ai";
 import { z } from "zod";
 
+const gateway = createGateway({
+  baseURL: "https://ai-gateway.vercel.sh/v1/ai",
+});
+
 export const generateQuizTitle = async (file: string) => {
   const result = await generateObject({
-    model: google("gemini-1.5-flash-latest"),
+    model: gateway("google/gemini-1.5-flash-latest"),
     schema: z.object({
       title: z
         .string()
